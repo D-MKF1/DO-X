@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>throttleWheel.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>throttleWheel</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/engineerpanel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.15 </red>
+      <green> 0.15 </green>
+      <blue>  0.15 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[2]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[4]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[6]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[8]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleWheel</object-name>
+    <property>controls/engines/engine[10]/throttle</property>
+    <factor> 99 </factor>
+    <center>
+      <x-m> 0.000 </x-m> <!-- near to panel -->
+      <y-m> 1.000 </y-m> <!-- right -->
+      <z-m> 0.000 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleWheel</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,0,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,2,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,4,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,6,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,8,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,10,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,0,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,2,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,4,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,6,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,8,"throttle")</script>
+     </binding>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,10,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+</PropertyList>

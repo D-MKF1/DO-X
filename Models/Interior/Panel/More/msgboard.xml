@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>msgboard.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>msgboard</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>msgboard</object-name>
+    <condition>
+      <not-equals>
+        <property>/instrumentation/rdf/message-to-pilot</property>
+        <value></value>
+      </not-equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>msgboard</object-name>
+    <object-name>Registration</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.del_msg_from_navigator();</script>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>

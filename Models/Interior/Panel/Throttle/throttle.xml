@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>throttle.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>ThrottleColumn</object-name>
+    <object-name>throttleL</object-name>
+    <object-name>throttleR</object-name>
+    <object-name>scrollL</object-name>
+    <object-name>scrollR</object-name>
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleL</object-name>
+    <property>/controls/engines/throttle-pilot-left</property>
+    <factor> -66 </factor>
+    <center>
+      <x-m> 0 </x-m> <!-- near to panel -->
+      <y-m> 0 </y-m> <!-- right -->
+      <z-m> 0 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1</y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleL</object-name>
+    <visible>true</visible>
+    <action>
+      <name>increase (scrollwheel)</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlL(0.08,1.0)</script>
+      </binding>
+    </action>
+    <action>
+      <name>decrease (scrollwheel)</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlL(-0.08,1.0)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>scrollL</object-name>
+    <visible>false</visible>
+    <action>
+      <name>increase (scrollwheel)</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlL(0.08,1.0)</script>
+      </binding>
+    </action>
+    <action>
+      <name>decrease (scrollwheel)</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlL(-0.08,1.0)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleR</object-name>
+    <property>/controls/engines/throttle-pilot-right</property>
+    <factor> -66 </factor>
+    <center>
+      <x-m> 0 </x-m> <!-- near to panel -->
+      <y-m> 0 </y-m> <!-- right -->
+      <z-m> 0 </z-m> <!-- up -->
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1</y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleR</object-name>
+    <visible>true</visible>
+    <action>
+      <name>increase (scrollwheel)</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlR(0.08,1.0)</script>
+      </binding>
+    </action>
+    <action>
+      <name>decrease (scrollwheel)</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlR(-0.08,1.0)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>scrollR</object-name>
+    <visible>false</visible>
+    <action>
+      <name>increase (scrollwheel)</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlR(0.08,1.0)</script>
+      </binding>
+    </action>
+    <action>
+      <name>decrease (scrollwheel)</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.throttleControlR(-0.08,1.0)</script>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
+

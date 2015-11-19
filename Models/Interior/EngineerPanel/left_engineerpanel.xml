@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>engineerpanel.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>throttleA</object-name>
+    <object-name>throttleB</object-name>
+    <object-name>throttleC</object-name>
+    <object-name>throttleD</object-name>
+    <object-name>throttleE</object-name>
+    <object-name>throttleF</object-name>
+    <object-name>mixtureA</object-name>
+    <object-name>mixtureB</object-name>
+    <object-name>mixtureC</object-name>
+    <object-name>mixtureD</object-name>
+    <object-name>mixtureE</object-name>
+    <object-name>mixtureF</object-name>
+    <object-name>clutchA</object-name>
+    <object-name>clutchB</object-name>
+    <object-name>clutchC</object-name>
+    <object-name>clutchD</object-name>
+    <object-name>clutchE</object-name>
+    <object-name>clutchF</object-name>
+    <object-name>verkleidung</object-name>
+    <object-name>v_handlauf</object-name>
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+    <object-name>throttleA</object-name>
+    <object-name>throttleB</object-name>
+    <object-name>throttleC</object-name>
+    <object-name>throttleD</object-name>
+    <object-name>throttleE</object-name>
+    <object-name>throttleF</object-name>
+    <object-name>mixtureA</object-name>
+    <object-name>mixtureB</object-name>
+    <object-name>mixtureC</object-name>
+    <object-name>mixtureD</object-name>
+    <object-name>mixtureE</object-name>
+    <object-name>mixtureF</object-name>
+    <object-name>clutchA</object-name>
+    <object-name>clutchB</object-name>
+    <object-name>clutchC</object-name>
+    <object-name>clutchD</object-name>
+    <object-name>clutchE</object-name>
+    <object-name>clutchF</object-name>
+    <object-name>verkleidung</object-name>
+    <object-name>v_handlauf</object-name>
+      <condition>
+        <equals>
+          <property>controls/lighting/engineerpanel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.6 </red>
+      <green> 0.6 </green>
+      <blue>  0.6 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <!-- Les moteurs numérotés vue de dessus 
+
+              avant
+              |   | 
+  gauche 0 2  4   5 3 1 droite
+         6 8 10  11 9 7
+              |   |
+               \ /
+             arrière
+                |
+  -->
+
+  <!-- 4  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleF</object-name>
+    <property>controls/engines/engine[4]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleF</object-name>
+   <property>controls/engines/engine[4]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleF</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,4,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,4,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchF</object-name>
+    <property>/engines/engine[4]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>clutchF</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>dox.clickClutch(4)</script>
+    </binding>
+  </action>
+</animation>
+
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureF</object-name>
+    <property>controls/engines/engine[4]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m>  0.734 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureF</object-name>
+   <property>controls/engines/engine[4]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureF</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[4]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[4]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- 10  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleE</object-name>
+    <property>controls/engines/engine[10]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleE</object-name>
+   <property>controls/engines/engine[10]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleE</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,10,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,10,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchE</object-name>
+    <property>/engines/engine[10]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>clutchE</object-name>
+   <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.clickClutch(10)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureE</object-name>
+    <property>controls/engines/engine[10]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m>  0.517 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureE</object-name>
+   <property>controls/engines/engine[10]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureE</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[10]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[10]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- 2  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleD</object-name>
+    <property>controls/engines/engine[2]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleD</object-name>
+   <property>controls/engines/engine[2]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleD</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,2,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,2,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchD</object-name>
+    <property>/engines/engine[2]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>clutchD</object-name>
+   <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.clickClutch(2)</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureD</object-name>
+    <property>controls/engines/engine[2]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m>  0.117 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureD</object-name>
+   <property>controls/engines/engine[2]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureD</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[2]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[2]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- 8  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleC</object-name>
+    <property>controls/engines/engine[8]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleC</object-name>
+   <property>controls/engines/engine[8]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleC</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,8,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,8,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchC</object-name>
+    <property>/engines/engine[8]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>clutchC</object-name>
+   <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.clickClutch(8)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureC</object-name>
+    <property>controls/engines/engine[8]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep>  95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m> -0.108 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureC</object-name>
+   <property>controls/engines/engine[8]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureC</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[8]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[8]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- 0  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleB</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleB</object-name>
+   <property>controls/engines/engine[0]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleB</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,0,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,0,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchB</object-name>
+    <property>/engines/engine[0]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>clutchB</object-name>
+   <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.clickClutch(0)</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureB</object-name>
+    <property>controls/engines/engine[0]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m> -0.506 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureB</object-name>
+   <property>controls/engines/engine[0]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureB</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[0]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[0]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+
+  <!-- 6  -->
+  <!-- Throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleA</object-name>
+    <property>controls/engines/engine[6]/throttle</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 99 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.040 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -0.040 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>throttleA</object-name>
+   <property>controls/engines/engine[6]/throttle</property>
+   <factor>0</factor>
+   <axis>
+    <x>  0 </x>
+    <y> -1 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>throttleA</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(0.10,6,"throttle")</script>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+      <command>nasal</command>
+      <script>dox.engControl(-0.10,6,"throttle")</script>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- Clutch for throttle controll by pilot -->
+  <animation>
+    <type>rotate</type>
+    <object-name>clutchA</object-name>
+    <property>/engines/engine[6]/clutch</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 27 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.032 </x-m>
+      <y-m>  0.774 </y-m>
+      <z-m> -0.193 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>clutchA</object-name>
+   <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.clickClutch(6)</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <!-- Mixture -->
+  <animation>
+    <type>rotate</type>
+    <object-name>mixtureA</object-name>
+    <property>controls/engines/engine[6]/mixture</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 95 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m> -0.723 </y-m>
+      <z-m> -0.389 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+   <object-name>mixtureA</object-name>
+   <property>controls/engines/engine[6]/mixture</property>
+   <factor>0</factor>
+   <axis>
+    <x> -1 </x>
+    <y>  0 </y>
+    <z>  0 </z>
+   </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>mixtureA</object-name>
+   <visible>true</visible>
+   <action>
+     <name>small increase (scrollwheel)</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[6]/mixture</property>
+       <step>0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>small decrease (scrollwheel)</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+       <property>controls/engines/engine[6]/mixture</property>
+       <step>-0.10</step>
+       <min>0</min>
+       <max>1</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+  </animation>
+
+  <!-- ###############  Wheel for all Engines on left side panel ################### -->
+  <!-- ThrottleWheel -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/throttleWheelL.xml</path>
+    <offsets>
+      <x-m>  0.040 </x-m> <!-- right -->
+      <y-m>  0.885 </y-m> <!-- near the panel -->
+      <z-m> -0.070 </z-m> <!-- up -->
+      <heading-deg> 180 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- ###############  Instruments ################### -->
+  <!-- Moteur intérieur gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-4.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-4.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-4.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-4.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+  
+  <!-- Moteur intérieur gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-10.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-10.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-10.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-10.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <!-- Moteur milieu gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-2.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-2.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-2.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-2.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m>  0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+  
+  <!-- Moteur milieu gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-8.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-8.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-8.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-8.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.120 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <!-- Moteurs extérieur gauche avant --> 
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-0.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-0.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-0.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-0.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.480 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+  
+  <!-- Moteurs extérieur gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/rpm/rpm-6.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.260 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-in-6.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.410 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/oiltemp/oiltemp-out-6.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.560 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/EngineerPanel/Instruments/clutchctrl/clutchctrl-6.xml</path>
+    <offsets>
+      <x-m> -0.169</x-m> <!-- back -->
+      <y-m> -0.719 </y-m> <!-- near the panel -->
+      <z-m>  0.830 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+  <!-- ###############  Labels activated by hotspots ################### -->
+  <animation>
+    <type>material</type>
+    <object-name>Label1</object-name>
+    <object-name>Label2</object-name>
+    <object-name>Label3</object-name>
+    <object-name>Label4</object-name>
+    <object-name>Label5</object-name>
+    <object-name>Label6</object-name>
+    <object-name>Label7</object-name>
+    <emission>
+        <red>1.0</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Label1</object-name>
+    <object-name>Label2</object-name>
+    <object-name>Label3</object-name>
+    <object-name>Label4</object-name>
+    <object-name>Label5</object-name>
+    <object-name>Label6</object-name>
+    <object-name>Label7</object-name>
+    <condition>
+        <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <!-- Instruments --> 
+  <text>
+    <name>Label1</name>
+    <type type="string">literal</type>
+    <text type="string">LARBOARD / LEFT WING</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.08</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>1.5</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> -0.160 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- back -->
+      <z-m>  0.750 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label2</name>
+    <type type="string">literal</type>
+    <text type="string">Oil temperature quitting the engine (not supported)</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.05</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>1.5</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> -0.160 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- back -->
+      <z-m>  0.630 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label3</name>
+    <type type="string">literal</type>
+    <text type="string">Oil temperature before flowing through the engine (not supported)</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.05</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>2</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> -0.160 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- back -->
+      <z-m>  0.480 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label4</name>
+    <type type="string">literal</type>
+    <text type="string">RPM for every engine</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.05</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>2</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> -0.160 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- back -->
+      <z-m>  0.300 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label5</name>
+    <type type="string">literal</type>
+    <text type="string">outer back | outer front | middle back -THROTTLES- middle front | inner back | inner front</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.04</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>3</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.350 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m>  0.020 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label6</name>
+    <type type="string">literal</type>
+    <text type="string">CLUTCH for pilot controlled engines (use left and middle mouse click)</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.04</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.8</max-height>
+    <max-width>1</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.350 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m> -0.100 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>Label6</name>
+    <type type="string">literal</type>
+    <text type="string">MIXTURES (only in Flightgear) In original DO-X here you set the ignition timing.</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.04</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>1.5</max-height>
+    <max-width>1</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.350 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m> -0.200 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+</PropertyList>
+

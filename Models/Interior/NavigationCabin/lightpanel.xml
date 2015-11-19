@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>lightpanel.ac</path>
+  <!-- Switches are always on sight :-) -->
+  <animation>
+    <type>material</type>
+    <object-name>panelSwitch</object-name>
+    <object-name>navSwitch</object-name>
+    <object-name>engineerSwitch</object-name>
+    <object-name>radioSwitch</object-name>
+    <object-name>helpengineSwitch</object-name>
+    <emission>
+      <red> 1 </red>
+      <green> 1 </green>
+      <blue> 1 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>panelLamp</object-name>
+    <object-name>navLamp</object-name>
+    <object-name>engineerLamp</object-name>
+    <object-name>radioLamp</object-name>
+    <object-name>helpengineLamp</object-name>
+    <emission>
+      <red>   0 </red>
+      <green> 2 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation>
+
+  <!-- Interior lighting in the Navigationroom self -->
+  <animation>
+    <type>material</type>
+    <object-name>lightbox</object-name>
+    <object-name>panelLampOff</object-name>
+    <object-name>navLampOff</object-name>
+    <object-name>engineerLampOff</object-name>
+    <object-name>radioLampOff</object-name>
+    <object-name>helpengineLampOff</object-name>
+    <object-name>panelSwitch</object-name>
+    <object-name>navSwitch</object-name>
+    <object-name>engineerSwitch</object-name>
+    <object-name>radioSwitch</object-name>
+    <object-name>helpengineSwitch</object-name>
+    <object-name>sign</object-name>
+      <condition>
+        <equals>
+          <property>/controls/lighting/navigationcabin</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+<!-- PanelRoom switch and controll lamps -->
+  <animation>
+    <type>select</type>
+    <object-name>panelLamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/panel</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>panelLampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/panel</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>panelSwitch</object-name>
+   <property>/controls/lighting/panel</property>
+   <factor>-25</factor>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>panelSwitch</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/controls/lighting/panel</property>
+     </binding>
+   </action>
+ </animation>
+
+<!-- NavigationRoom switch and controll lamps -->
+  <animation>
+    <type>select</type>
+    <object-name>navLamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/navigationcabin</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>navLampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/navigationcabin</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>navSwitch</object-name>
+   <property>/controls/lighting/navigationcabin</property>
+   <factor>-25</factor>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>navSwitch</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/controls/lighting/navigationcabin</property>
+     </binding>
+   </action>
+ </animation>
+
+<!-- EngineerRoom switch and controll lamps -->
+  <animation>
+    <type>select</type>
+    <object-name>engineerLamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/engineerpanel</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>engineerLampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/engineerpanel</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>engineerSwitch</object-name>
+   <property>/controls/lighting/engineerpanel</property>
+   <factor>-25</factor>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>engineerSwitch</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/controls/lighting/engineerpanel</property>
+     </binding>
+   </action>
+ </animation>
+
+<!-- RadioRoom switch and controll lamps -->
+  <animation>
+    <type>select</type>
+    <object-name>radioLamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/radiocabin</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>radioLampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/radiocabin</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>radioSwitch</object-name>
+   <property>/controls/lighting/radiocabin</property>
+   <factor>-25</factor>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>radioSwitch</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/controls/lighting/radiocabin</property>
+     </binding>
+   </action>
+ </animation>
+
+<!-- HelpMachineRoom switch and controll lamps -->
+  <animation>
+    <type>select</type>
+    <object-name>helpengineLamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/helpenginecabin</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>helpengineLampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/helpenginecabin</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>helpengineSwitch</object-name>
+   <property>/controls/lighting/helpenginecabin</property>
+   <factor>-25</factor>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+ </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>helpengineSwitch</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/controls/lighting/helpenginecabin</property>
+     </binding>
+   </action>
+ </animation>
+
+</PropertyList>

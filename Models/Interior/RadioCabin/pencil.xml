@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>pencil.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>pencil</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>pencil</object-name>
+    <condition>
+      <equals>
+        <property>/instrumentation/rdf/power-on</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+ <animation>
+   <type>pick</type>
+   <object-name>pencil</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <binding>
+       <command>nasal</command>
+       <script>dox.rdfNavInfo()</script>
+     </binding>
+   </action>
+ </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/radiocabin</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+<!-- Labels activated by hotspots -->
+  <animation>
+    <type>material</type>
+    <object-name>LabelPencil</object-name>
+    <emission>
+        <red>1.0</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelPencil</object-name>
+    <condition>
+        <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelPencil</name>
+    <type type="string">literal</type>
+    <text type="string">Show the heading correction calculation</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0 </x-m> <!-- near to panel -->
+      <y-m>  0 </y-m> <!-- right -->
+      <z-m>  0.035 </z-m> <!-- up -->
+      <heading-deg> -45 </heading-deg>
+    </offsets>
+  </text>
+
+</PropertyList>

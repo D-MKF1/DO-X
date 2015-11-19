@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- #######################################################################################
+     This is the first test with copilot from Anders Gidenstams script. Navigation is working in Multiplayer but
+     I do not understand everything for the moment. So there are a lot of parameters which was
+     not supported in this DO-X. TODO: Lighting in Multiplayer, Clutch and RPM control for the panel, 
+     walkview for Copilot in Multiplayer 
+     ########################################################################################
+-->
+<PropertyList>
+  <sim>
+    <description>Dornier Do X - Copilot</description>
+    <author>Marc Kraus :: Lake of Constance Hangar, Emmanuel BARANGER, Pierre GEOFFROY</author>
+    <aircraft-version>1.0.0</aircraft-version>
+    <status>Alpha</status>
+
+    <flight-model>null</flight-model>
+    <aero>DO-X</aero>
+
+    <startup>
+      <splash-texture>Aircraft/DO-X/dox-splash.png</splash-texture>
+    </startup>
+
+    <sound>
+      <audible>true</audible>
+      <path archive="y">Aircraft/DO-X/Sounds/dox-copilot-sound.xml</path>
+    </sound>
+
+    <model>
+      <path>Aircraft/DO-X/Models/dox-copilot.xml</path>
+    </model>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic> 
+        <int n="0" alias="/instrumentation/rdf/power-on">0</int>                <!-- Power-on of the RDF for MP/Pilot -->
+        <int n="1" alias="/instrumentation/rdf/frequency-select-knob">0</int>   <!-- Select NDB or VOR of the RDF for MP/Pilot -->
+        <int n="2" alias="/instrumentation/adf/frequencies/selected-khz">0</int>            <!-- Frequency of ADF for MP/Pilot -->
+        <float n="0" alias="/instrumentation/rdf/rotation-deg">0</float>          <!-- 0 Aileron direction for MP/Pilot -->
+        <float n="1" alias="/instrumentation/nav/frequencies/selected-mhz">0</float>       <!-- Frequency of NAV for MP/Pilot -->
+        <string n="0" alias="/instrumentation/rdf/message-to-pilot"></string>    <!-- MP heading-correction message for the pilot -->
+      </generic>
+    </multiplay>
+
+
+    <!-- Doesn't work that great - lots of jitter. -->
+    <view n="0">
+     <!-- Copilot's position on start -->
+     <name>Copilot View</name>
+     <type>lookfrom</type>
+     <config>
+      <internal type="bool">true</internal>
+      <from-model type="bool">false</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+      <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+      <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+      <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
+      <x-offset-m type="double">   0.685 </x-offset-m>	<!-- Right -->
+      <y-offset-m type="double">   0.455 </y-offset-m>	<!-- Up    -->
+      <z-offset-m type="double"> -11.450 </z-offset-m>	<!-- Back  -->
+      <pitch-offset-deg type="double">-10</pitch-offset-deg>
+      <default-field-of-view-deg type="double"> 70 </default-field-of-view-deg>
+     </config>
+    </view>
+
+    <view n="101">
+      <name>1th Officer</name>
+      <type>lookfrom</type>
+     <config>
+      <!-- x/y/z == right/up/back -->
+      <internal type="bool">true</internal>
+      <from-model type="bool">false</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+      <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+      <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+      <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
+      <x-offset-m type="double">   0.000 </x-offset-m>	<!-- Right -->
+      <y-offset-m type="double">   0.580 </y-offset-m>	<!-- Up    -->
+      <z-offset-m type="double"> -11.520 </z-offset-m>	<!-- Back  -->
+      <pitch-offset-deg type="double"> -8 </pitch-offset-deg>
+      <default-field-of-view-deg type="double"> 70 </default-field-of-view-deg>
+     </config>
+    </view>
+
+    <view n="105">
+      <name>Radio Cabin View</name>
+      <type>lookfrom</type>
+      <config>
+        <internal type="bool">true</internal>
+        <from-model type="bool">false</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+        <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+        <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+        <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+        <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+        <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
+        <x-offset-m type="double">  0.200 </x-offset-m>	<!-- Right -->
+        <y-offset-m type="double">  0.400 </y-offset-m>	<!-- Up    -->
+        <z-offset-m type="double"> -3.430 </z-offset-m>	<!-- Back  -->
+        <heading-offset-deg type="double"> -90 </heading-offset-deg>
+        <pitch-offset-deg type="double"> -5 </pitch-offset-deg>
+        <default-field-of-view-deg type="double"> 60 </default-field-of-view-deg>
+      </config>
+    </view>
+
+    <!-- Move the center of the external views. -->
+    <view n="1">
+     <config>
+      <at-model type="bool">false</at-model>
+      <target-z-offset-m type="double"> 20.0 </target-z-offset-m>
+     </config>
+    </view>
+    <view n="2">
+     <config>
+      <at-model type="bool">false</at-model>
+      <target-z-offset-m type="double"> 20.0 </target-z-offset-m>
+     </config>
+    </view>
+    <view n="3">
+     <config>
+      <at-model type="bool">false</at-model>
+      <target-z-offset-m type="double"> 20.0 </target-z-offset-m>
+     </config>
+    </view>
+    <view n="5">
+     <config>
+      <at-model type="bool">false</at-model>
+      <target-z-offset-m type="double"> 20.0 </target-z-offset-m>
+     </config>
+    </view>
+    <view n="6">
+     <config>
+      <at-model type="bool">false</at-model>
+      <target-z-offset-m type="double"> 20.0 </target-z-offset-m>
+     </config>
+    </view>
+
+    <controls>
+      <generic>
+        <int type="bool" n="29" alias="/controls/glass-effect"/>
+        <int type="double" n="30" alias="/controls/engines/throttle-pilot-left"/>
+        <int type="double" n="31" alias="/controls/engines/throttle-pilot-right"/>
+        <int n="32" alias="/instrumentation/afn2/markeron"/>
+        <int type="double" n="33" alias="/instrumentation/afn2/heading-correction"/>
+        <int type="double" n="34" alias="/instrumentation/afn2/distance"/>
+        <int n="35" alias="/controls/anchor"/>
+        <int type="bool"   n="7" alias="/controls/lighting/panel"/>
+        <int type="bool"   n="8" alias="/controls/lighting/navigationcabin"/>
+        <int type="bool"   n="9" alias="/controls/lighting/engineerpanel"/>
+        <int type="bool"   n="10" alias="/controls/lighting/radiocabin"/>
+        <int type="bool"   n="11" alias="/controls/lighting/helpenginecabin"/>
+        <int type="bool"   n="12" alias="/controls/lighting/brightness"/>
+        <int type="bool"   n="13" alias="/controls/glass-effect"/>
+        <int type="bool"   n="36" alias="/instrumentation/rdf/headset/enabled"/>
+        <int type="bool"   n="37" alias="/instrumentation/rdf/headset/atc-enabled"/>
+        <int type="double" n="38" alias="/instrumentation/rdf/headset/atc-volume"/>
+        <int type="bool"   n="39" alias="/instrumentation/rdf/headset/avionics-enabled"/>
+        <int type="double" n="40" alias="/instrumentation/rdf/headset/avionics-volume"/>
+        <int type="bool"   n="41" alias="/instrumentation/rdf/headset/chatter-enabled"/>
+        <int type="double" n="42" alias="/instrumentation/rdf/headset/chatter-volume"/>
+        <int type="bool"   n="43" alias="/instrumentation/rdf/headset/effects-enabled"/>
+        <int type="double" n="44" alias="/instrumentation/rdf/headset/effects-volume"/>
+        <int type="bool"   n="45" alias="/instrumentation/rdf/headset/master-enabled"/>
+        <int type="double" n="46" alias="/instrumentation/rdf/headset/master-volume"/>
+        <int type="bool"   n="47" alias="/instrumentation/rdf/headset/adf-ident-audible"/>
+        <int type="double" n="48" alias="/instrumentation/rdf/headset/adf-volume-norm"/>
+        <int type="bool"   n="49" alias="/instrumentation/rdf/headset/nav-audio-btn"/>
+        <int type="double" n="50" alias="/instrumentation/rdf/headset/nav-volume"/>
+      </generic>
+    </controls>
+
+    <help>
+      <title>Dornier Do X</title>
+      <key>
+        <name> > </name>
+        <desc>Switch Copilot/Radio View</desc>
+      </key>
+      <text>
+      ________________ Navigation with RDF and NDB __________________
+
+      Switch view between Copilot-Seat and Radio Navigation Seat with Ctrl-R.
+      In the Radio Cabin you will find a RDF-panel. First you have to set
+      a NDB, ILS or VOR/DME -frequency in range. Switch on the Instrument with the 
+      little knob AN/AUS. Fit on the headset and turn the DREHWINKEL-SCHEIBE
+      to find the loudest volume of the beacon-signal you have set.
+      If you have found the max. volume, click the pencil
+      below the RDF-panel. So the pilot get the 
+      heading correctino message on his panel.
+      </text>
+    </help>
+
+    <menubar>
+     <default>
+      <menu n="10">
+      <label>Dornier Do X</label>
+      <enabled type="bool">true</enabled>
+       <item>
+        <label>Select MP-pilot</label>
+        <binding>
+         <command>nasal</command>
+         <script>
+          dual_control_tools.
+            copilot_dialog.show(aircraft_dual_control.pilot_type);
+         </script>
+        </binding>
+       </item>
+      </menu>
+     </default>
+    </menubar>
+  </sim>
+
+  <!-- never set the magnetos here to 0, cause the sound for the cutoff is controlled by magnetos 0 in dox-sound.xml -->
+  <controls>
+    <engines>
+      <throttle-pilot-left type="double">0.0</throttle-pilot-left>
+      <throttle-pilot-right type="double">0.0</throttle-pilot-right>
+      <helpengine-lever type="double">0.5</helpengine-lever>
+      <engine n="0">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="1">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="2">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="3">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="4">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="5">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="6">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="7">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="8">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="9">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="10">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="11">
+        <magnetos>3</magnetos>
+      </engine>
+    </engines>
+
+    <lighting>
+      <panel type="bool">0</panel>
+      <navigationcabin type="bool">0</navigationcabin>
+      <engineerpanel type="bool">0</engineerpanel>
+      <radiocabin type="bool">0</radiocabin>
+      <helpenginecabin type="bool">0</helpenginecabin>
+      <brightness type="double">1.0</brightness>
+    </lighting>
+
+    <glass-effect type="bool">1</glass-effect>
+
+  </controls>
+
+  <nasal>
+    <dox>
+      <file>Aircraft/DO-X/Nasal/dox.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-clutch.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-copilot.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-menu.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-rdf.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-helpengine.nas</file>
+      <file>Aircraft/DO-X/Nasal/dox-lights.nas</file>
+    </dox>
+    <frw>
+      <file>Aircraft/DO-X/Nasal/frw.nas</file>
+    </frw>
+    <dual_control_tools>
+     <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+    </dual_control_tools>
+    <aircraft_dual_control>
+     <file>Aircraft/DO-X/Nasal/dox-dual-control.nas</file>
+    </aircraft_dual_control>
+    <dual_control>
+     <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
+    </dual_control>
+    <!-- Walk View -->
+    <walkview>
+      <file>Aircraft/DO-X/Nasal/Gidenstam/walkview.nas</file>
+    </walkview>
+    <WalkViews>
+      <file>Aircraft/DO-X/Nasal/dox-walk-view.nas</file>
+    </WalkViews>
+  </nasal>
+
+  <instrumentation>
+    <rdf>
+      <power-on>0</power-on>
+      <frequency-select-knob>0</frequency-select-knob>
+      <headset>
+        <enabled type="bool">0</enabled>
+        <!-- properties swap if pilot fit headset -->
+        <atc-enabled type="bool">1</atc-enabled>
+        <atc-volume type="double">0.7</atc-volume>
+        <avionics-enabled type="bool">1</avionics-enabled>
+        <avionics-volume type="double">1.0</avionics-volume>
+        <chatter-enabled type="bool">0</chatter-enabled>
+        <chatter-volume type="double">0.0</chatter-volume>
+        <effects-enabled type="bool">1</effects-enabled>
+        <effects-volume type="double">0.08</effects-volume>
+        <master-enabled type="bool">1</master-enabled>
+        <master-volume type="double">0.7</master-volume>
+        <adf-ident-audible type="bool">1</adf-ident-audible>
+        <adf-volume-norm type="double">0.7</adf-volume-norm>
+        <nav-audio-btn type="bool">1</nav-audio-btn>
+        <nav-volume type="double">0.7</nav-volume>
+      </headset>
+    </rdf>
+    <adf>
+      <power-btn type="bool">0</power-btn>
+    </adf>
+    <!-- Flightgear Rallye Watch  -->
+    <frw>
+      <running type="bool">0</running>
+      <btn-mode type="bool">0</btn-mode>
+      <btn-reset type="bool">0</btn-reset>
+      <btn-start-stop type="bool">0</btn-start-stop>
+      <flight-time>
+        <start-time type="double">0</start-time>
+        <accu type="double">0</accu>
+        <total type="double">0</total>
+        <hours type="int">0</hours>
+        <minutes type="int">0</minutes>
+        <seconds type="int">0</seconds>
+      </flight-time>
+    </frw>
+  </instrumentation>
+
+
+  <input>
+    <keyboard>
+        <key n="60">
+          <name> > </name>
+          <desc>View of the Radio Navigation Officer</desc>
+          <binding>
+            <command>nasal</command>
+            <script>dox.changeView(8);</script>
+          </binding>
+        </key>
+       <!-- Keyboard commands for the Walkview-->
+       <key n="87">
+        <name>W</name>
+        <desc>Walk view: Run forward.</desc>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.forward(4.0)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.forward(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+
+       <key n="119">
+        <name>w</name>
+        <desc>Walk view: Walk forward.</desc>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.forward(1.0)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.forward(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+
+       <key n="100">
+        <name>d</name>
+        <desc>Walk view: Side step right.</desc>
+        <repeatable type="bool">true</repeatable>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.side_step(0.5)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.side_step(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+
+       <key n="68">
+        <name>D</name>
+        <desc>Walk view: Fast side step right.</desc>
+        <repeatable type="bool">true</repeatable>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.side_step(1.0)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.side_step(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+
+       <key n="97">
+        <name>a</name>
+        <desc>Walk view: Side step left.</desc>
+        <repeatable type="bool">true</repeatable>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.side_step(-0.5)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.side_step(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+       <key n="65">
+        <name>A</name>
+        <desc>Walk view: Fast side step left.</desc>
+        <repeatable type="bool">true</repeatable>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.side_step(-1.0)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.side_step(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+
+       <key n="115">
+        <name>s</name>
+        <desc>Walk view: Walk backwards.</desc>
+        <binding>
+         <command>nasal</command>
+         <script>
+           if (!walkview.forward(-0.5)) {
+           }
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+           if (!walkview.forward(0)) {
+           }
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+       <!-- Remove this if you for some reason have 2d panels and want the default
+            Swap panels function on 'S'.
+       -->
+       <key n="83">
+        <name>S</name>
+        <desc>Walk view: Walk backwards.</desc>
+        <binding>
+         <command>nasal</command>
+         <script>
+           walkview.forward(-1.0);
+         </script>
+        </binding>
+        <mod-up>
+         <binding>
+          <command>nasal</command>
+          <script>
+            walkview.forward(0);
+          </script>
+         </binding>
+        </mod-up>
+       </key>
+    </keyboard>
+  </input>
+
+</PropertyList>

@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>dox.ac</path>
+
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/DO-X/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+    
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
+    </load>
+
+    <unload>
+      livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
+    </unload>
+  </nasal>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>fuselage</object-name>
+    <object-name>gouvernail</object-name>
+    <object-name>aile</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>derive</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>directionG</object-name>
+    <object-name>directionD</object-name>
+    <object-name>axes</object-name>
+    <object-name>barresmoteurs</object-name>
+    <object-name>socleRadio</object-name>
+    <object-name>socleWind</object-name>
+
+    <object-name>trous</object-name>
+
+    <!-- Objets transparents -->
+    <object-name>vitres</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitres</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitres</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>gouvernail</object-name>
+    <object-name>aile</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>derive</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>directionG</object-name>
+    <object-name>directionD</object-name>
+    <object-name>axes</object-name>
+    <object-name>barresmoteurs</object-name>
+    <object-name>socleRadio</object-name>
+    <object-name>socleWind</object-name>
+
+    <object-name>trous</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+<!--
+    <diffuse>
+      <red-prop>diffuse/red</red-prop>
+      <green-prop>diffuse/green</green-prop>
+      <blue-prop>diffuse/blue</blue-prop>
+    </diffuse>
+
+    <ambient>
+      <red-prop>ambient/red</red-prop>
+      <green-prop>ambient/green</green-prop>
+      <blue-prop>ambient/blue</blue-prop>
+    </ambient>
+-->
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+
+    <emission>
+      <red-prop>emission/red</red-prop>
+      <green-prop>emission/green</green-prop>
+      <blue-prop>emission/blue</blue-prop>
+    </emission>
+<!--
+    <shininess>
+      <shininess-prop>shininess</shininess-prop>
+    </shininess>
+-->
+  </animation>
+
+  <!-- ############################ LIGHTS ################################ -->
+  <!-- Landing Light-->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Lights/LandingLight.xml</path>
+    <name>Landing Light</name>
+    <offsets>
+      <x-m> 20.100 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.000 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Left Nav Light-->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Lights/RedNavLight.xml</path>
+    <name>Left Nav Light</name>
+    <offsets>
+      <x-m>  -6.000 </x-m>
+      <y-m> -24.000 </y-m>
+      <z-m>   0.850 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Right Nav Light-->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Lights/GreenNavLight.xml</path>
+    <name>Right Nav Light</name>
+    <offsets>
+      <x-m> -6.000 </x-m>
+      <y-m> 24.000 </y-m>
+      <z-m>  0.850 </z-m>
+    </offsets>
+  </model>
+
+  <!-- White Strobe -->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Lights/StrobeLight.xml</path>
+    <name>StrobeLight</name>
+    <offsets>
+      <x-m>  8.400 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -3.630 </z-m>
+    </offsets>
+  </model>
+  
+  <animation>
+    <type>material</type>
+    <object-name>strobeLight</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+      <factor-prop>/sim/model/lights/strobe/state</factor-prop>
+    </emission>
+  </animation>
+
+  <!-- BeaconLight -->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Lights/BeaconLight.xml</path>
+    <name>BeaconLight</name>
+    <offsets>
+      <x-m> -1.500 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.530 </z-m>
+    </offsets>
+  </model>
+  
+  <animation>
+    <type>material</type>
+    <object-name>beaconLight</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 0 </green>
+      <blue>  0 </blue>
+      <factor-prop>/sim/model/lights/beacon/state</factor-prop>
+    </emission>
+  </animation>
+  <!-- ########################## END OF LIGHTS ############################ -->
+
+  <!-- Une ombre pour OSG  -->
+  <model>
+    <name>shadowOSG</name>
+    <path>Aircraft/DO-X/Models/shadow.xml</path>
+  </model>
+
+  <!-- Immatriculation -->
+  <model>
+    <path>Aircraft/DO-X/Models/Immat/immat.xml</path>
+    <offsets>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Effets de vagues en particules -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/waves.xml</path>
+    <offsets>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Anchor -->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/Anchor/anchor.xml</path>
+    <offsets>
+      <x-m> -18.812 </x-m>
+      <y-m>   1.834 </y-m>
+      <z-m>  -4.123 </z-m>
+      <roll-deg>    28 </roll-deg>    <!-- R X -->
+      <pitch-deg>   37 </pitch-deg>   <!-- R Y -->
+      <heading-deg>  0 </heading-deg> <!-- R Z -->
+    </offsets>
+  </model>
+
+  <!-- Intérieur, zone passagers -->
+  <model>
+    <path>Aircraft/DO-X/Models/Interior/interior.xml</path>
+    <offsets>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+  <!-- RadioDirectionFinder on the Front Deck-->
+  <model>
+    <path>Aircraft/DO-X/Models/Exterior/RadioDirFinder/radiodir.xml</path>
+    <offsets>
+      <x-m> -15.931 </x-m>
+      <y-m>   1.045 </y-m>
+      <z-m>   0.000 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 1 extérieur gauche -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines1.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m> -9.350 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 2 milieu gauche -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines2.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m> -5.513 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 3 intérieur gauche -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines3.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m> -1.845 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 4 intérieur droit -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines4.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m>  1.845 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 5 milieu droit -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines5.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m>  5.513 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Bloc moteurs 6 extérieur droit -->
+  <model>
+    <path>Aircraft/DO-X/Models/Engines/engines6.xml</path>
+    <offsets>
+      <x-m> -7.239 </x-m>
+      <y-m>  9.350 </y-m>
+      <z-m>  3.329 </z-m>
+    </offsets>
+  </model>
+
+
+  <!-- Cranking effects -->
+  <!-- Coté gauche -->
+  <!-- Extérieur gauche - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-0.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -9.812 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur gauche - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-0.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -8.887 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu gauche - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-2.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -5.975 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu gauche - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-2.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -5.050 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur gauche - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-4.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -2.307 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur gauche - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-4.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m> -1.382 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur gauche - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-6.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -9.812 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur gauche - Droite arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-6.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -8.887 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu gauche - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-8.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -5.975 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu gauche - Droite arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-8.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -5.050 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur gauche - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-10.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -2.307 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur gauche - Droite arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-10.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m> -1.382 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Coté droit -->
+  <!-- Extérieur droit - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-1.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  9.812 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur droit - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-1.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  8.887 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu droit - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-3.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  5.975 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu droit - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-3.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  5.050 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur droit - Droite avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-5.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  2.307 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur droit - Gauche avant -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-5.xml</path>
+    <offsets>
+      <x-m> -8.790 </x-m>
+      <y-m>  1.382 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur droit - Droite arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-7.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  9.812 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Extérieur droit - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-7.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  8.887 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu droit - Droit arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-9.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  5.975 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Milieu droit - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-9.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  5.050 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur droit - Droite arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-11.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  2.307 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur droit - Gauche arrière -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/cranking/cranking-11.xml</path>
+    <offsets>
+      <x-m> -6.454 </x-m>
+      <y-m>  1.382 </y-m>
+      <z-m>  3.643 </z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>material</type>
+    <object-name>moteur</object-name>
+    <object-name>echappe</object-name>
+    <object-name>support</object-name>
+
+    <property-base>sim/model/livery-engine</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>Engines/colors-E.png</texture>
+<!--
+    <diffuse>
+      <red-prop>diffuse/red</red-prop>
+      <green-prop>diffuse/green</green-prop>
+      <blue-prop>diffuse/blue</blue-prop>
+    </diffuse>
+
+    <ambient>
+      <red-prop>ambient/red</red-prop>
+      <green-prop>ambient/green</green-prop>
+      <blue-prop>ambient/blue</blue-prop>
+    </ambient>
+-->
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+
+    <emission>
+      <red-prop>emission/red</red-prop>
+      <green-prop>emission/green</green-prop>
+      <blue-prop>emission/blue</blue-prop>
+    </emission>
+<!--
+    <shininess>
+      <shininess-prop>shininess</shininess-prop>
+    </shininess>
+-->
+  </animation>
+
+  <!-- Gouverne de direction -->
+  <animation>
+    <type>rotate</type>
+    <object-name>direction</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -10 </factor>
+    <center>
+      <x-m> 18.857 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  1.746 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>directionG</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -10 </factor>
+    <center>
+      <x-m> 16.998 </x-m>
+      <y-m> -1.742 </y-m>
+      <z-m>  0.550 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>directionD</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -10 </factor>
+    <center>
+      <x-m> 16.998 </x-m>
+      <y-m>  1.742 </y-m>
+      <z-m>  0.550 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>gouvernail</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -10 </factor>
+    <center>
+      <x-m>  5.143 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -4.425 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- Gouverne de profondeur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor>10</factor>
+    <center>
+      <x-m> 18.378 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  1.713 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Les ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronG</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -0.703 </x-m>
+      <y-m> 15.426 </y-m>
+      <z-m> -0.008 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronD</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -0.703 </x-m>
+      <y-m> 15.426 </y-m>
+      <z-m> -0.008 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

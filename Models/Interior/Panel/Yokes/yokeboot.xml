@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>yokeboot.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>YokeBoots</object-name>
+    <object-name>YokeBarre</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.22 </red>
+      <green> 0.12 </green>
+      <blue>  0.09 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>YokeElevator</object-name>
+    <object-name>Yoke</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> -4 </factor>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.045 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x> <!-- near to panel -->
+      <y> 1 </y> <!--up -->
+      <z> 0 </z> <!-- right -->
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>YokeAileron</object-name>
+    <object-name>Yoke</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> -8 </factor>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.045 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x> <!-- near to panel -->
+      <y> 1 </y> <!--up -->
+      <z> 0 </z> <!-- right -->
+    </axis>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>YokeBoots</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>sim/yokes-visible</property>
+     </binding>
+   </action>
+  </animation>
+
+</PropertyList>

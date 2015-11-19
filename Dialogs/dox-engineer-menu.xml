@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <name>dox-engineer</name>
+  <modal>false</modal>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Do X Engineer Menu</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+  <!-- Les moteurs numérotés vue de dessus 
+
+              avant
+              |   | 
+  gauche 0 2  4   5 3 1 droite
+         6 8 10  11 9 7
+              |   |
+               \ /
+             arrière
+                |
+  -->
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>^</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>/ """" \</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>0</legend>
+      <key>0</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(0)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>2</legend>
+      <key>2</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(2)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>4</legend>
+      <key>4</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(4)</script>
+      </binding>
+    </button>
+
+    <text>
+      <label>|  Front  |</label>
+    </text>
+
+    <button>
+      <legend>5</legend>
+      <key>5</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(5)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>3</legend>
+      <key>3</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(3)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>1</legend>
+      <key>1</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(1)</script>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>6</legend>
+      <key>6</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(6)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>8</legend>
+      <key>8</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(8)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>10 +</legend>
+      <key>+</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(10)</script>
+      </binding>
+    </button>
+
+    <text>
+      <label>|  Back  |</label>
+    </text>
+
+    <button>
+      <legend>11 -</legend>
+      <key>-</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(11)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>9</legend>
+      <key>9</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(9)</script>
+      </binding>
+    </button>
+
+    <button>
+      <legend>7</legend>
+      <key>7</key>
+      <binding>
+        <command>nasal</command>
+        <script>dox.switchEngine(7)</script>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>    Larboard (Backbord)   |       |   Starboard (Steuerbord)</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>|       |</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>\     /</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>If speed is more than 80km/h or 35kts unlock clutch first.</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+  
+</PropertyList>
+

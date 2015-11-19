@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>lamp.ac</path>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+    <object-name>lampOff</object-name>
+    <object-name>shield</object-name>
+      <condition>
+        <not-equals>
+          <property>/controls/lighting/panel</property>
+          <value>1</value>
+        </not-equals>
+      </condition>
+    <emission>
+      <red>   0.03 </red>
+      <green> 0.03 </green>
+      <blue>  0.03 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>lamp</object-name>
+    <object-name>shield</object-name>
+      <condition>
+        <equals>
+          <property>/controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>lamp</object-name>
+    <condition>
+      <equals>
+        <property>/controls/lighting/panel</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>lampOff</object-name>
+    <condition>
+      <not-equals>
+        <property>/controls/lighting/panel</property>
+        <value>1</value>
+      </not-equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <property>/orientation/roll-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <property>/orientation/pitch-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+</PropertyList>

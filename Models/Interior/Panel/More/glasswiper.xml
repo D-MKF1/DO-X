@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>glasswiper.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>glasswiper</object-name>
+    <object-name>nail</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>glasswiper</object-name>
+    <property>/orientation/roll-deg</property>
+    <min> -5 </min>
+    <max> 90 </max>
+    <interpolation>
+      <entry><ind> -5 </ind><dep> -5 </dep></entry>
+      <entry><ind> 90 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>glasswiper</object-name>
+    <property>/orientation/pitch-deg</property>
+    <min>   2 </min>
+    <max> -90 </max>
+    <interpolation>
+      <entry><ind> -90 </ind><dep> -90 </dep></entry>
+      <entry><ind>   2 </ind><dep>   2 </dep></entry>
+    </interpolation>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>glasswiper</object-name>
+    <object-name>nail</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/glass-effect</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+    <object-name>glasswiper</object-name>
+    <object-name>nail</object-name>
+      <condition>
+        <equals>
+          <property>controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+</PropertyList>
+

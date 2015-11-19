@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>anchor.ac</path>
+
+  <animation>
+    <object-name>anchor</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>anchor</object-name>
+    <condition>
+      <equals>
+        <property>/controls/anchor</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+</PropertyList>
+

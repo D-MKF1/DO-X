@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>clutchctrl.ac</path>
+
+  <animation>
+    <object-name>rebord</object-name>
+    <object-name>LampLocked</object-name>
+    <object-name>LampUnlocked</object-name>
+    <object-name>LampEngineOff</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LampLocked</object-name>
+    <emission>
+      <red>   0 </red>
+      <green> 2 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LampUnlocked</object-name>
+    <emission>
+      <red>   2 </red>
+      <green> 2 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LampEngineOff</object-name>
+    <emission>
+      <red>   2 </red>
+      <green> 0 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LampLocked</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>/engines/engine[10]/running</property>
+          <value>1</value>
+        </equals>
+        <equals>
+          <property>/engines/engine[10]/clutch</property>
+          <value>1</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+ 
+  <animation>
+    <type>select</type>
+    <object-name>LampUnlocked</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>/engines/engine[10]/running</property>
+          <value>1</value>
+        </equals>
+        <less-than>
+          <property>/engines/engine[10]/clutch</property>
+          <value>1</value>
+        </less-than>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LampEngineOff</object-name>
+    <condition>
+      <equals>
+        <property>/engines/engine[10]/running</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
+
+</PropertyList>
+

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>trimwheels.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>trimbox</object-name>
+    <object-name>ailtrimwheel</object-name>
+    <object-name>eltrimwheel</object-name>
+    <object-name>rudderwheel</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!--Rudder Trim Wheel -->
+  <animation>
+    <type>rotate</type>
+    <object-name>rudderwheel</object-name>
+    <property>/controls/flight/rudder-trim</property>
+    <factor>-4680</factor>
+    <center>
+      <x-m>-0.170</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>rudderwheel</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/rudder-trim</property>
+        <step>-0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>rudderwheel</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/rudder-trim</property>
+        <step>0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!--Elevator Trim Wheel -->
+  <animation>
+    <type>rotate</type>
+    <object-name>eltrimwheel</object-name>
+    <property>/controls/flight/elevator-trim</property>
+    <factor>-1080</factor>
+    <center>
+      <x-m> 0.145 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.083 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>eltrimwheel</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/elevator-trim</property>
+        <step>-0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>eltrimwheel</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/elevator-trim</property>
+        <step>0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!--Aileron Trim Wheel -->
+  <animation>
+    <type>rotate</type>
+    <object-name>ailtrimwheel</object-name>
+    <property>/controls/flight/aileron-trim</property>
+    <factor>-1080</factor>
+    <center>
+      <x-m> 0.145 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.083 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ailtrimwheel</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/aileron-trim</property>
+        <step>-0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ailtrimwheel</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/aileron-trim</property>
+        <step>0.005</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>/controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+
+<!-- Labels activated by hotspots -->
+
+  <animation>
+    <type>material</type>
+    <object-name>LabelElTrim</object-name>
+    <object-name>LabelAilTrim</object-name>
+    <object-name>LabelRudderTrim</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.8 </green>
+      <blue>  0.0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelElTrim</object-name>
+    <object-name>LabelAilTrim</object-name>
+    <object-name>LabelRudderTrim</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelElTrim</name>
+    <type type="string">literal</type>
+    <text type="string">Elevator Trim</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.018</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.240 </x-m> <!-- near to panel -->
+      <y-m>  0.100 </y-m> <!-- right -->
+      <z-m>  0.240 </z-m> <!-- up -->
+      <heading-deg> 90 </heading-deg>
+    </offsets>
+  </text>
+
+  <text>
+    <name>LabelAilTrim</name>
+    <type type="string">literal</type>
+    <text type="string">Aileron Trim</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.018</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.160 </x-m> <!-- near to panel -->
+      <y-m>  0.100 </y-m> <!-- right -->
+      <z-m>  0.320 </z-m> <!-- up -->
+      <heading-deg> 90 </heading-deg>
+    </offsets>
+  </text>
+
+  <text>
+    <name>LabelRudderTrim</name>
+    <type type="string">literal</type>
+    <text type="string">Rudder Trim</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.018</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> -0.180 </x-m> <!-- near to panel -->
+      <y-m>  0.100 </y-m> <!-- right -->
+      <z-m>  0.280 </z-m> <!-- up -->
+      <heading-deg> 90 </heading-deg>
+    </offsets>
+  </text>
+
+</PropertyList>
+

@@ -1,0 +1,205 @@
+<PropertyList>
+
+  <path>headset.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>headset</object-name>
+    <object-name>cable</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>cable</object-name>
+    <condition>
+      <equals>
+        <property>/instrumentation/rdf/headset/position</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>headset</object-name>
+    <condition>
+      <not>
+        <property>/instrumentation/rdf/headset/position</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>headset</object-name>
+    <object-name>cable</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+        <condition>
+          <or>
+            <and>
+              <not>
+                <property>/dual-control/active</property>
+              </not>
+              <property>/dual-control/i-am-the-pilot</property>           
+            </and>
+            <and>
+              <property>/dual-control/active</property>
+              <not>
+                <property>/dual-control/i-am-the-pilot</property>
+              </not>           
+            </and>
+          </or>
+        </condition>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/rdf/headset/enabled</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/rdf/headset/position</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/atc-enabled</property>
+          <property>/sim/sound/atc/enabled</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/atc-volume</property>
+          <property>/sim/sound/atc/volume</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/avionics-enabled</property>
+          <property>/sim/sound/avionics/enabled</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/avionics-volume</property>
+          <property>/sim/sound/avionics/volume</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/chatter-enabled</property>
+          <property>/sim/sound/chatter/enabled</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/chatter-volume</property>
+          <property>/sim/sound/chatter/volume</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/effects-enabled</property>
+          <property>/sim/sound/effects/enabled</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/effects-volume</property>
+          <property>/sim/sound/effects/volume</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/master-enabled</property>
+          <property>/sim/sound/enabled</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/master-volume</property>
+          <property>/sim/sound/volume</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/adf-ident-audible</property>
+          <property>/instrumentation/adf/ident-audible</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/adf-volume-norm</property>
+          <property>/instrumentation/adf/volume-norm</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/nav-audio-btn</property>
+          <property>/instrumentation/nav/audio-btn</property>
+        </binding>
+        <binding>
+          <command>property-swap</command>
+          <property>/instrumentation/rdf/headset/nav-volume</property>
+          <property>/instrumentation/nav/volume</property>
+        </binding>
+    </action>
+  </animation> 
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+    <condition>
+      <and>
+        <equals>
+          <property>/controls/lighting/radiocabin</property>
+          <value>1</value>
+        </equals>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </and>
+    </condition>
+    <emission>
+      <red>   0.27 </red>
+      <green> 0.17 </green>
+      <blue>  0.12 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <!-- Labels activated by hotspots -->
+  <animation>
+    <type>material</type>
+    <object-name>LabelHeadset</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.8 </green>
+      <blue>  0.0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelHeadset</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelHeadset</name>
+    <type type="string">literal</type>
+    <text type="string">Fit up to find the right NDB-Frequency signal</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.000 </x-m> <!-- near to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m>  0.060 </z-m> <!-- up -->
+      <heading-deg> -90 </heading-deg>
+    </offsets>
+  </text>
+
+</PropertyList>
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>aft-ger.ac</path>
+
+  <animation>
+    <object-name>rebord</object-name>
+    <object-name>spirit_bottom</object-name>
+    <object-name>spirit_column</object-name>
+
+    <object-name>glas_tube</object-name>
+  </animation>
+
+  <animation> 
+    <type>scale</type>
+    <object-name>spirit_column</object-name>
+    <property>/orientation/pitch-deg</property>
+    <x-offset> 1 </x-offset>
+    <y-offset> 1 </y-offset>
+    <z-offset> 1 </z-offset>
+    <x-factor> 0.000 </x-factor>
+    <y-factor> 0.000 </y-factor>
+    <z-factor> 0.045 </z-factor>
+    <z-min> 0.01 </z-min>
+    <z-max> 2.01 </z-max>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.056 </z-m>
+    </center>
+  </animation>
+
+  <animation> 
+    <type>material</type>
+    <object-name>spirit_bottom</object-name>
+    <object-name>spirit_column</object-name>
+    <object-name>glas_tube</object-name>
+    <emission>
+      <red> 1 </red>
+      <green> 1 </green>
+      <blue> 1 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>spirit_column</object-name>
+    <object-name>spirit_bottom</object-name>
+    <condition>
+      <property>/orientation/pitch-deg</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+  </animation>
+
+  <!-- Labels activated by hotspots -->
+  <animation>
+    <type>material</type>
+    <object-name>LabelAFT</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.8 </green>
+      <blue>  0.0 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelAFT</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelAFT</name>
+    <type type="string">literal</type>
+    <text type="string">Pitch Indicator</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.010 </x-m> <!-- near to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m>  0.065 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+</PropertyList>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>propellerB.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>helice</object-name>
+    <object-name>bol</object-name>
+
+    <!-- Objets transparents -->
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation> 
+
+  <animation>
+    <name>HeliceComplete</name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+    <object-name>helice</object-name>
+    <object-name>bol</object-name>
+  </animation>
+
+  <!-- L'hélice --> 
+  <!-- Séléction de l'objet visible en fonction des rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[7]/rpm</property>
+        <value>600</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>engines/engine[7]/rpm</property>
+        <value>300.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[7]/rpm</property>
+        <value>600.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>helice</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[7]/rpm</property>
+        <value>600</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <!-- Rotation de l'hélice/disque -->
+  <animation>
+    <type>spin</type>
+     <object-name>HeliceComplete</object-name>
+     <property>engines/engine[7]/rpm</property>
+    <factor> 1 </factor>
+    <axis>
+     <x> -1 </x>
+     <y>  0 </y>
+     <z>  0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

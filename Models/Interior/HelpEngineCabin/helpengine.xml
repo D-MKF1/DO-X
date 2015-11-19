@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>helpengine.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>block</object-name>
+    <object-name>generatorWheel</object-name>
+    <object-name>compressorWheel</object-name>
+    <object-name>lever</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!-- rotate the generator wheel -->
+  <animation>
+   <type>spin</type>
+    <object-name>generatorWheel</object-name>
+    <property>controls/engines/helpengine-lever</property>
+    <factor> 300 </factor>
+   <axis>
+    <x> 1 </x>
+    <y> 0 </y>
+    <z> 0 </z>
+   </axis>
+  </animation>
+
+  <!-- rotate the compressor wheel -->
+  <animation>
+   <type>spin</type>
+    <object-name>compressorWheel</object-name>
+    <condition>
+      <greater-than>
+        <property>controls/engines/helpengine-lever</property>
+        <value>0.5</value>
+      </greater-than>
+    </condition>
+    <property>controls/engines/helpengine-lever</property>
+    <factor> -400 </factor>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m> -0.363 </y-m>
+      <z-m> -0.150 </z-m>
+    </center>
+   <axis>
+    <x> 1 </x>
+    <y> 0 </y>
+    <z> 0 </z>
+   </axis>
+  </animation>
+
+  <!-- Helpengine Lever -->
+  <animation>
+    <type>rotate</type>
+    <object-name>lever</object-name>
+    <property>controls/engines/helpengine-lever</property>
+    <interpolation>
+      <entry><ind>0</ind><dep> 0</dep></entry>
+      <entry><ind>1</ind><dep>60</dep></entry>
+    </interpolation>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0</x-m>
+      <y-m> -0.373 </y-m>
+      <z-m> -0.160 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>lever</object-name>
+    <visible>true</visible>
+    <action>
+      <name>small increase (scrollwheel)</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.helpEngControl(0.10)</script>
+      </binding>
+    </action>
+    <action>
+      <name>small decrease (scrollwheel)</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>dox.helpEngControl(-0.10)</script>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/helpenginecabin</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.6 </red>
+      <green> 0.5 </green>
+      <blue>  0.4 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <!-- Labels activated by hotspots -->
+  <animation>
+    <type>material</type>
+    <object-name>LabelHelpEngine</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>0.8</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelHelpEngine</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelHelpEngine</name>
+    <type type="string">literal</type>
+    <text type="string">This Helpengine was with his generator responsible for the electrical system on board.
+Switch on the lamps with key 'l' or at the panel in the NavigationCabin and turn this lever, to try it out. But notice that this hits the instruments lighting, too.
+Before start-up the engines in the DO-X the engineer turned the engines with compressed air (but we have not supported it here).</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.022</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.3</max-height>
+    <max-width>0.6</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>left-center</alignment>
+    <offsets>
+      <x-m> -0.400 </x-m> <!-- distance to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m>  0.400 </z-m> <!-- up -->
+      <heading-deg> 135 </heading-deg>
+    </offsets>
+  </text>
+
+</PropertyList>
+

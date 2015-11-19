@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <!-- Nozer 
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/middle.xml</path>
+    <offsets>
+      <x-m> -16.796 </x-m>
+      <y-m>   0.000 </y-m>
+      <z-m>  -1.690 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> -->
+
+  <!-- Center 
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/middle.xml</path>
+    <offsets>
+      <x-m> 14.007 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.994 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> -->
+
+  <!-- Tail -->
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/tail.xml</path>
+    <offsets>
+      <x-m> 12 </x-m>
+      <y-m>  0 </y-m>
+      <z-m> -4 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- Left
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/left.xml</path>
+    <offsets>
+      <x-m>  -1.550 </x-m>
+      <y-m> -33.989 </y-m>
+      <z-m>  -0.174 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> -->
+
+  <!-- Right
+  <model>
+    <path>Aircraft/DO-X/Models/Effects/waves/right.xml</path>
+    <offsets>
+      <x-m> -1.550 </x-m>
+      <y-m> 33.989 </y-m>
+      <z-m> -0.174 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> -->
+
+</PropertyList>
+

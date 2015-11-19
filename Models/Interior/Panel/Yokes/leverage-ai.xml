@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>Aircraft/DO-X/Models/Interior/Panel/Pedals/leverage.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>leverage</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+
+  <!-- Interior lighting -->
+  <animation>
+    <type>material</type>
+      <condition>
+        <equals>
+          <property>controls/lighting/panel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    <emission>
+      <red>   0.25 </red>
+      <green> 0.15 </green>
+      <blue>  0.10 </blue>
+      <factor-prop>/controls/lighting/brightness</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+   <type>translate</type>
+    <object-name>leverage</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 0.024 </factor>
+   <axis>
+     <x>-1.0</x>
+     <y> 0.0</y>
+     <z> 0.0</z>
+   </axis>
+  </animation>
+
+</PropertyList>

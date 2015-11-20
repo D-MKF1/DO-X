@@ -47,3 +47,14 @@ setlistener("/controls/flight/rudder", func(r) {
     if (a < 15) setprop("/controls/special/towel", r * 0.8);
 }, 0, 1);
 
+props.globals.initNode("/instrumentation/doors/window/position-norm",0,"DOUBLE");
+
+var FrontWindow = func {
+   var frontwindow = getprop("/instrumentation/doors/window/position-norm") or 0;
+   if (frontwindow < 1){
+      interpolate("/instrumentation/doors/window/position-norm", 1  , 1);
+   }else{
+      interpolate("/instrumentation/doors/window/position-norm", 0  , 1);
+   }
+}
+

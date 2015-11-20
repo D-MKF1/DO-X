@@ -8,6 +8,7 @@
     <!-- Objets opaques -->
     <object-name>interieur</object-name>
     <object-name>inttour</object-name>
+    <object-name>inttour1</object-name>
     <object-name>planchets</object-name>
     <object-name>intPanel</object-name>
     <object-name>woodPanel</object-name>
@@ -22,6 +23,8 @@
 
     <!-- Objets transparents -->
     <object-name>intvitres</object-name>
+	<object-name>fvl</object-name>
+	<object-name>fvr</object-name>
   </animation>
 
   <animation>
@@ -29,17 +32,23 @@
     <shader>chrome</shader>
     <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
     <object-name>intvitres</object-name>
+	<object-name>fvl</object-name>
+	<object-name>fvr</object-name>
   </animation>
 
   <animation>
     <type>noshadow</type>
     <object-name>intvitres</object-name>
+	<object-name>fvl</object-name>
+	<object-name>fvr</object-name>
   </animation>
 
   <!-- We love the glass-shader effect, but for the pilot with bad eyes we need this help:-) -->
   <animation>
     <type>select</type>
     <object-name>intvitres</object-name>
+	<object-name>fvl</object-name>
+	<object-name>fvr</object-name>
     <condition>
       <not-equals>
         <property>/controls/glass-effect</property>
@@ -47,7 +56,79 @@
       </not-equals>
     </condition>
   </animation>
-
+  
+  <animation>
+    <type>pick</type>
+	<object-name>fvl</object-name>
+	<object-name>fvr</object-name>
+	<object-name>fwl</object-name>
+	<object-name>fwr</object-name>
+	<object-name>griff</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>dox.FrontWindow()</script>
+       </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>fvr</object-name>
+    <object-name>fwr</object-name>
+	<object-name>griff</object-name>
+    <property>sim/multiplay/generic/float[12]</property>
+    <factor> -90 </factor>
+    <center>
+      <x-m>-12.7429 </x-m>
+      <y-m>  0.4 </y-m>
+      <z-m>  0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>  
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>fvl</object-name>
+    <object-name>fwl</object-name>
+    <property>sim/multiplay/generic/float[12]</property>
+    <factor> 90 </factor>
+    <center>
+      <x-m>-12.7429 </x-m>
+      <y-m> -0.4 </y-m>
+      <z-m>  0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+	<object-name>griff</object-name>
+    <property>sim/multiplay/generic/float[12]</property>
+    <factor> -90 </factor>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.3145 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation> 
+  
   <!-- Interior lighting Panel -->
   <animation>
     <type>material</type>
@@ -59,9 +140,9 @@
         </equals>
       </condition>
     <emission>
-      <red>   0.23 </red>
-      <green> 0.14 </green>
-      <blue>  0.11 </blue>
+      <red>   0.16 </red>
+      <green> 0.16 </green>
+      <blue>  0.16 </blue>
       <factor-prop>/controls/lighting/brightness</factor-prop>
     </emission>
   </animation>

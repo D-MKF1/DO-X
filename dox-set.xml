@@ -62,6 +62,7 @@
         <float n="9" alias="/instrumentation/magnetic-compass/indicated-heading-deg">0</float>        <!-- 9 magnetic Compass for MP -->
         <float n="10" alias="/controls/engines/throttle-pilot-right">0</float>        <!-- 10 throttle gear right for MP -->
         <float n="11" alias="/controls/engines/throttle-pilot-left">0</float>         <!-- 11 throttle gear left for MP -->
+        <float n="12" alias="/instrumentation/doors/window/position-norm">0</float>   <!-- 12 front window -->
       </generic>
     </multiplay>
 

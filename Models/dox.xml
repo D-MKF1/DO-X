@@ -49,6 +49,7 @@
 
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
+	<object-name>vitresfw</object-name>
   </animation>
 
   <animation>
@@ -56,11 +57,13 @@
     <shader>chrome</shader>
     <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
     <object-name>vitres</object-name>
+	<object-name>vitresfw</object-name>
   </animation>
 
   <animation>
     <type>noshadow</type>
     <object-name>vitres</object-name>
+	<object-name>vitresfw</object-name>
   </animation>
 
   <animation>
@@ -221,6 +224,17 @@
       <z-m> 0 </z-m>
     </offsets>
   </model>
+  <!-- Front Window Glass effect animation -->
+  <animation>
+    <type>select</type>
+    <object-name>vitresfw</object-name>
+    <condition>
+      <less-than>
+        <property>sim/multiplay/generic/float[12]</property>
+        <value>0.1</value>
+      </less-than>
+    </condition>
+  </animation>
 
   <!-- Anchor -->
   <model>

@@ -359,7 +359,7 @@
 
   <!-- PilotII-->
   <model>
-    <path>Aircraft/DO-X/Models/Pilot/pilot.xml</path>
+    <path>Aircraft/DO-X/Models/Pilot/copilot.xml</path>
       <condition>
         <equals>
           <property>/fdm/yasim/fcs/dual-control/enabled</property>

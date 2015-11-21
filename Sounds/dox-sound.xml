@@ -361,6 +361,10 @@
       </and>
      </or>
      <property>/sim/current-view/internal</property>
+	<greater-than>
+		<property>/instrumentation/doors/window/position-norm</property>
+		<value>0.01</value>
+	</greater-than>
     </and>
    </condition>
    <position>
@@ -372,42 +376,42 @@
     <property>/engines/engine[0]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <volume>
     <property>/engines/engine[1]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <volume>
     <property>/engines/engine[4]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <volume>
     <property>/engines/engine[5]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <volume>
     <property>/engines/engine[8]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <volume>
     <property>/engines/engine[9]/mp-osi</property>
     <factor>0.009</factor>
     <min>0.01</min>
-    <max>0.15</max>
+    <max>0.12</max>
     <offset>0.07</offset>
    </volume>
    <pitch>
@@ -505,6 +509,10 @@
       </and>
      </or>
      <property>/sim/current-view/internal</property>
+	<greater-than>
+		<property>/instrumentation/doors/window/position-norm</property>
+		<value>0.01</value>
+	</greater-than>
     </and>
    </condition>
    <position>
@@ -515,43 +523,43 @@
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <volume>
     <property>/engines/engine[1]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <volume>
     <property>/engines/engine[4]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <volume>
     <property>/engines/engine[5]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <volume>
     <property>/engines/engine[8]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <volume>
     <property>/engines/engine[9]/mp-osi</property>
     <factor>0.009</factor>
-    <min>0.11</min>
-    <max>0.21</max>
+    <min>0.03</min>
+    <max>0.05</max>
     <offset>0.065</offset>
    </volume>
    <pitch>
@@ -650,9 +658,15 @@
        </greater-than-equals>
       </and>
      </or>
-     <not>
-      <property>/sim/current-view/internal</property>
-     </not>
+	 <or>
+     	<not>
+      	  <property>/sim/current-view/internal</property>
+     	</not>
+ 		<greater-than>
+ 			<property>/instrumentation/doors/window/position-norm</property>
+ 			<value>0.01</value>
+ 		</greater-than>
+		</or>
     </and>
    </condition>
    <position>
@@ -796,9 +810,15 @@
        </less-than>
       </and>
      </or>
-     <not>
-      <property>/sim/current-view/internal</property>
-     </not>
+	 <or>
+     	<not>
+      	  <property>/sim/current-view/internal</property>
+     	</not>
+ 		<greater-than>
+ 			<property>/instrumentation/doors/window/position-norm</property>
+ 			<value>0.01</value>
+ 		</greater-than>
+	 </or>
     </and>
    </condition>
    <position>

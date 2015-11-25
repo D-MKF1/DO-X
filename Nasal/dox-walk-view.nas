@@ -39,7 +39,7 @@ var flightdeckConstraint =
               }),
          # Frontdeck window.
          walkview.ActionConstraint.new
-             (walkview.SlopingYAlignedPlane.new([ -12.4, -0.10, -0.4], 
+             (walkview.SlopingYAlignedPlane.new([ -16.4, -0.10, -0.4], 
                                                 [ -11.4,  0.10, -0.4]),
               func {
                   #print("Geht ans Frontfenster!");

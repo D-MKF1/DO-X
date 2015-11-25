@@ -20,6 +20,11 @@
     <object-name>woodRadio</object-name>
     <object-name>intHelpEng</object-name>
     <object-name>woodHelpEng</object-name>
+    <object-name>cable</object-name>
+    <object-name>cable.001</object-name>
+    <object-name>cable.002</object-name>
+    <object-name>row</object-name>
+    <object-name>row.001</object-name>
 
     <!-- Objets transparents -->
     <object-name>intvitres</object-name>
@@ -133,6 +138,11 @@
   <animation>
     <type>material</type>
     <object-name>intPanel</object-name>
+    <object-name>cable</object-name>
+    <object-name>cable.001</object-name>
+    <object-name>cable.002</object-name>
+    <object-name>row</object-name>
+    <object-name>row.001</object-name>
       <condition>
         <equals>
           <property>/controls/lighting/panel</property>
@@ -175,9 +185,9 @@
         </equals>
       </condition>
     <emission>
-      <red>   0.20 </red>
-      <green> 0.13 </green>
-      <blue>  0.12 </blue>
+      <red>   0.16 </red>
+      <green> 0.16 </green>
+      <blue>  0.16 </blue>
       <factor-prop>/controls/lighting/brightness</factor-prop>
     </emission>
   </animation>
@@ -210,9 +220,9 @@
         </equals>
       </condition>
     <emission>
-      <red>   0.19 </red>
-      <green> 0.14 </green>
-      <blue>  0.13 </blue>
+      <red>   0.16 </red>
+      <green> 0.16 </green>
+      <blue>  0.16 </blue>
       <factor-prop>/controls/lighting/brightness</factor-prop>
     </emission>
   </animation>

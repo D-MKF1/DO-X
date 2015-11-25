@@ -13,7 +13,7 @@
     <object-name>anchor</object-name>
     <condition>
       <equals>
-        <property>/controls/anchor</property>
+        <property>/sim/multiplay/generic/int[12]</property>
         <value> 1 </value>
       </equals>
     </condition>

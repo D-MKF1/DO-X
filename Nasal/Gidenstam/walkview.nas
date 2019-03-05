@@ -116,8 +116,7 @@ var Walker = {
             obj.view.getNode("config/x-offset-m").getValue(),
             obj.view.getNode("config/y-offset-m").getValue()
             ];
-        obj.heading =
-            obj.view.getNode("config/heading-offset-deg").getValue();
+        obj.heading = obj.view.getNode("config/heading-offset-deg").getValue() or 0.0;
         obj.speed_fwd  = 0.0;
         obj.speed_side = 0.0;
         obj.isactive = 0;

@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!-- Dornier Do X Emmanuel BARANGER
                   Pierre GEOFFROY
+                  
+    Source       : http://en.wikipedia.org/wiki/Dornier_Do_X
 
     Wingspan     : 157 ft 5 in (48 m)
     lenght       : 134 ft 2 in (41 m)
@@ -91,7 +93,6 @@
         <control-output control="FLAP1" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
         <control-output control="FLAP1" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
         <control-output control="FLAP1" prop="/surface-positions/aileron-pos-norm"/>
-		<control-speed control="FLAP1" transition-time="2.0"/>
   </wing>
 
   <hstab x="-17.677" y="0.0" z="1.704" 
@@ -107,7 +108,6 @@
          <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
 
          <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
-		 <control-speed control="FLAP0" transition-time="7.0"/>
   </hstab>
 
   <vstab x="-17.677" y="0" z="-0.494" 
@@ -124,7 +124,7 @@
          <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"/>
   </vstab> 
 
-  <!-- Les moteurs numerotes vue de dessus 
+  <!-- Les moteurs numérotés vue de dessus 
 
               avant
               |   | 
@@ -136,7 +136,7 @@
                 |
   -->
 
-  <!-- Moteurs exterieur gauche avant -->
+  <!-- Moteurs extérieur gauche avant -->
   <propeller x="7.204" y="9.350" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -161,7 +161,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs exterieur droit avant -->
+  <!-- Moteurs extérieur droit avant -->
   <propeller x="7.204" y="-9.350" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -236,7 +236,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs interieur gauche avant -->
+  <!-- Moteurs intérieur gauche avant -->
   <propeller x="7.204" y="1.845" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -249,7 +249,7 @@
              takeoff-rpm="1740"
              gear-ratio="0.67"
              contra="1">
-             <actionpt x="9.221" y="1.845" z="3.458"/>
+             <actionpt x="9.221" y="9.350" z="3.458"/>
              <piston-engine eng-power="640"
                             eng-rpm="2600"
                             displacement="1500"
@@ -261,7 +261,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs interieur droit avant -->
+  <!-- Moteurs intérieur droit avant -->
   <propeller x="7.204" y="-1.845" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -286,7 +286,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs exterieur gauche arrière -->
+  <!-- Moteurs extérieur gauche arrière -->
   <propeller x="6.912" y="9.350" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -311,7 +311,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs exterieur droit arrière -->
+  <!-- Moteurs extérieur droit arrière -->
   <propeller x="6.912" y="-9.350" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -386,7 +386,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs interieur gauche arrière -->
+  <!-- Moteurs intérieur gauche arrière -->
   <propeller x="6.912" y="1.845" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -411,7 +411,7 @@
            </piston-engine>
   </propeller>
 
-  <!-- Moteurs interieur droit arrière -->
+  <!-- Moteurs intérieur droit arrière -->
   <propeller x="6.912" y="-1.845" z="3.643"
              radius="1.59" 
              mass="870" 
@@ -449,7 +449,7 @@
         reduce-friction-by-extension="1.0"
         speed-planing="25" 
         spring-factor-not-planing="0.2">
-        <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
+        <!--<control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>-->
   </gear>
 
   <!-- Center 1 -->
@@ -521,9 +521,9 @@
         reduce-friction-by-extension="1.25"
         speed-planing="15" 
         spring-factor-not-planing="0.7">
-        <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="1.0" dst1="-1.0"/>
+        <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="1" dst1="-1"/>
   </gear>
-
+  
   <!--thruster turn on the towel -->
   <thruster x="-4.0" y="0.0" z="-3.0" 
             vx="0" vy="1.0" vz="0"
